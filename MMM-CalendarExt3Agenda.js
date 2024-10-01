@@ -1,4 +1,4 @@
-/* global Module */
+/* global Module Log */
 
 Module.register('MMM-CalendarExt3Agenda', {
   defaults: {
@@ -203,7 +203,7 @@ Module.register('MMM-CalendarExt3Agenda', {
 
   draw: function (dom, options) {
     if (!this.library?.loaded) return dom
-    let t = new Date()
+    let t = new Date(Date.now())
     const moment = new Date(t.getFullYear(), t.getMonth(), t.getDate())
     const {
       isToday, isThisMonth, isThisYear, getWeekNo, makeWeatherDOM,
@@ -381,7 +381,7 @@ Module.register('MMM-CalendarExt3Agenda', {
       let bwoc = getBeginOfWeek(new Date(cm.getFullYear(), cm.getMonth(), 1), options)
       let ewoc = getBeginOfWeek(new Date(cm.getFullYear(), cm.getMonth() + 1, 0), options)
       let im = new Date(bwoc.getTime())
-      let today = new Date()
+      let today = new Date(Date.now())
       let view = document.createElement('table')
       view.classList.add('miniMonth')
       let caption = document.createElement('caption')
@@ -419,7 +419,7 @@ Module.register('MMM-CalendarExt3Agenda', {
         let weekline = document.createElement('tr')
         let cw = getWeekNo(im, options)
         let cwc = document.createElement('td')
-        let thisWeek = (im.getTime() === getBeginOfWeek(new Date(), options).getTime()) ? ['thisWeek'] : []
+        let thisWeek = (im.getTime() === getBeginOfWeek(new Date(Date.now()), options).getTime()) ? ['thisWeek'] : []
         cwc.classList.add('cw', 'cell')
         cwc.scope = 'row'
         cwc.innerHTML = cw
@@ -491,8 +491,8 @@ Module.register('MMM-CalendarExt3Agenda', {
       }),
       config: options,
       range: [
-        new Date(sm.getFullYear(), sm.getMonth(), 1).getTime(),
-        new Date(em.getFullYear(), em.getMonth() + 1, 0).getTime()
+        new Date(sm.getFullYear(), sm.getMonth() - 1, 1).getTime(),
+        new Date(em.getFullYear(), em.getMonth() + 2, 1).getTime()
       ]
     })
     const copied = JSON.parse(JSON.stringify(targetEvents))
