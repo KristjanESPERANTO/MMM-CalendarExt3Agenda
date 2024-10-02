@@ -464,4 +464,9 @@ eventTransformer: (e) => {
 - [MMM-CalendarExt3Timeline](https://github.com/MMRIZE/MMM-CalendarExt3Timeline)
 - [MMM-CalendarExt3Journal](https://github.com/MMRIZE/MMM-CalendarExt3Journal)
 
+## Developer commands
+- `npm install` - Install devDependencies like ESLint.
+- `npm run lint` - Run linting and formatter checks.
+- `npm run lint:fix` - Fix linting and formatter issues.
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y56IFLK)
